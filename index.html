@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AOXCDAO - Interstellar Governance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Rajdhani', 'sans-serif'],
+            },
+            colors: {
+              xlayer: {
+                black: '#000000',
+                card: '#121212',
+                border: '#2A2A2A',
+                green: '#00FFA3', // OKX Web3 Neon Green
+                magenta: '#d946ef',
+                text: '#EDEDED'
+              },
+              aoxc: {
+                dark: '#0B0C15',
+                panel: '#151925',
+              }
+            },
+            backgroundImage: {
+              'space-gradient': 'radial-gradient(circle at top center, #1a1a1a 0%, #000000 100%)',
+              'green-glow': 'linear-gradient(135deg, #00FFA3 0%, #00cc82 100%)',
+              'construction-stripes': 'repeating-linear-gradient(45deg, #000, #000 10px, #eab308 10px, #eab308 20px)',
+              'blueprint-grid': 'linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)'
+            },
+            animation: {
+              'green-breathing': 'green-breathing 4s ease-in-out infinite',
+              'scan-vertical': 'scan-vertical 3s linear infinite',
+              'welding': 'welding 0.5s ease-in-out infinite alternate',
+              'spin-slow': 'spin 12s linear infinite',
+              'spin-reverse-slow': 'spin-reverse 15s linear infinite',
+            },
+            keyframes: {
+              'scan-vertical': {
+                '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                '50%': { opacity: '1' },
+                '100%': { transform: 'translateY(100%)', opacity: '0' }
+              },
+              'welding': {
+                '0%': { opacity: '0.3', transform: 'scale(0.8)' },
+                '100%': { opacity: '1', transform: 'scale(1.5)', filter: 'brightness(2)' }
+              },
+              'spin-reverse': {
+                'from': { transform: 'rotate(360deg)' },
+                'to': { transform: 'rotate(0deg)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000000; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00FFA3; 
+      }
+      body {
+        background-color: #000000;
+        color: #EDEDED;
+      }
+      .glass-panel {
+        background: rgba(18, 18, 18, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      
+      /* Subtle Green Pulse for Text */
+      @keyframes green-breathing {
+        0%, 100% {
+          fill-opacity: 0.5;
+          filter: drop-shadow(0 0 0px rgba(0, 255, 163, 0));
+        }
+        50% {
+          fill-opacity: 1;
+          filter: drop-shadow(0 0 8px rgba(0, 255, 163, 0.6));
+        }
+      }
+      
+      .animate-green-breathing {
+        animation: green-breathing 4s ease-in-out infinite;
+        fill: #00FFA3; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+    "rxjs": "https://esm.sh/rxjs@^7.8.2",
+    "ethers": "https://esm.sh/ethers@6.11.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
