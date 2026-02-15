@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # 1. SHADOW NODE (The Fake X Layer)
+  # This acts as the blockchain itself.
+  chain:
+    build:
+      context: ./shadow-network
+      dockerfile: Dockerfile
+    command: >
+      anvil 
+      --host 0.0.0.0 
+      --port 8545 
+      --chain-id 196 
+      --block-time 2 
+      --state /data/state.json 
+      --gas-price 500000000
+    ports:
+      - '8545:8545' # RPC Port exposed to localhost
+    volumes:
+      - ./shadow-network/data:/data
+    networks:
+      - galaxy-net
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8545']
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  # 2. THE ARCHITECT (Deployer Bot)
+  # Waits for the chain to start, then deploys contracts & mints 310 NFTs.
+  architect:
+    build:
+      context: ./shadow-network
+      dockerfile: Dockerfile
+    depends_on:
+      chain:
+        condition: service_healthy
+    environment:
+      - RPC_URL=http://chain:8545
+      - PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 # Anvil Default Account 0
+    command: >
+      /bin/sh -c "
+      echo '>> INITIALIZING GALAXY DEPLOYMENT SEQUENCE...';
+      forge script script/DeployGalaxy.s.sol:DeployGalaxy --rpc-url http://chain:8545 --broadcast --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
+      echo '>> GALAXY ONLINE. READY FOR INTERFACE.';
+      tail -f /dev/null
+      "
+    volumes:
+      - ./shadow-network:/app
+    networks:
+      - galaxy-net
+
+networks:
+  galaxy-net:
+    driver: bridge
