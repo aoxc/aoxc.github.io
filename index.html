@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AOXCDAO - Interstellar Governance</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script>
       tailwind.config = {
         theme: {
@@ -19,7 +21,7 @@
                 black: '#000000',
                 card: '#121212',
                 border: '#2A2A2A',
-                green: '#00FFA3', // OKX Web3 Neon Green
+                green: '#00FFA3', 
                 magenta: '#d946ef',
                 text: '#EDEDED'
               },
@@ -60,25 +62,20 @@
         }
       }
     </script>
+    
     <style>
-      /* Custom scrollbar for webkit */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #000000; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333; 
-        border-radius: 3px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #00FFA3; 
-      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #000000; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #00FFA3; }
+      
       body {
         background-color: #000000;
         color: #EDEDED;
+        margin: 0;
+        overflow-x: hidden;
       }
+      
       .glass-panel {
         background: rgba(18, 18, 18, 0.7);
         backdrop-filter: blur(20px);
@@ -86,16 +83,9 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
       
-      /* Subtle Green Pulse for Text */
       @keyframes green-breathing {
-        0%, 100% {
-          fill-opacity: 0.5;
-          filter: drop-shadow(0 0 0px rgba(0, 255, 163, 0));
-        }
-        50% {
-          fill-opacity: 1;
-          filter: drop-shadow(0 0 8px rgba(0, 255, 163, 0.6));
-        }
+        0%, 100% { fill-opacity: 0.5; filter: drop-shadow(0 0 0px rgba(0, 255, 163, 0)); }
+        50% { fill-opacity: 1; filter: drop-shadow(0 0 8px rgba(0, 255, 163, 0.6)); }
       }
       
       .animate-green-breathing {
@@ -103,22 +93,24 @@
         fill: #00FFA3; 
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
-    "rxjs": "https://esm.sh/rxjs@^7.8.2",
-    "ethers": "https://esm.sh/ethers@6.11.1"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+        "rxjs": "https://esm.sh/rxjs@^7.8.2",
+        "ethers": "https://esm.sh/ethers@6.11.1"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="./index.css">
+  </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="./index.tsx"></script>
+  </body>
 </html>
